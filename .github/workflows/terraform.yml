@@ -4,21 +4,19 @@ on:
   push:
     branches:
       - main
-
   pull_request:
 
 permissions:
   id-token: write
   contents: read
 
- env:
+env:
   TF_VAR_subscription_id: "f103b43a-d2ad-459e-9511-315e7b2bdb37"
   TF_VAR_tenant_id: "348d70a3-296c-4b25-bcf9-7bdbc1edca8c"
   TF_VAR_location: "uksouth"
 
 jobs:
   terraform:
-
     runs-on: ubuntu-latest
 
     defaults:
@@ -26,16 +24,15 @@ jobs:
         working-directory: environments/dev
 
     steps:
-
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Azure Login
         uses: azure/login@v2
         with:
-          client-id: c47f70bd-ea68-4f21-8aff-65f55924c93d
-          tenant-id: 348d70a3-296c-4b25-bcf9-7bdbc1edca8c
-          subscription-id: f103b43a-d2ad-459e-9511-315e7b2bdb37
+          client-id: "c47f70bd-ea68-4f21-8aff-65f55924c93d"
+          tenant-id: "348d70a3-296c-4b25-bcf9-7bdbc1edca8c"
+          subscription-id: "f103b43a-d2ad-459e-9511-315e7b2bdb37"
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
@@ -50,4 +47,4 @@ jobs:
         run: terraform validate
 
       - name: Terraform Plan
-        run: terraform plan
+        run: terraform plan -input=false
