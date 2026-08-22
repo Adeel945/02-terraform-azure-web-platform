@@ -11,6 +11,11 @@ permissions:
   id-token: write
   contents: read
 
+ env:
+  TF_VAR_subscription_id: "f103b43a-d2ad-459e-9511-315e7b2bdb37"
+  TF_VAR_tenant_id: "348d70a3-296c-4b25-bcf9-7bdbc1edca8c"
+  TF_VAR_location: "uksouth"
+
 jobs:
   terraform:
 
