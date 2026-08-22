@@ -1,0 +1,5 @@
+subscription_id = "<subscription-id>"
+
+tenant_id = "<tenant-id>"
+
+location = "uksouth"

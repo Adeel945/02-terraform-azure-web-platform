@@ -1,0 +1,24 @@
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Variable files
+*.auto.tfvars
+terraform.tfvars
+
+# Local Terraform plan files
+*.tfplan
+
+# VS Code
+.vscode/
+
+# Operating System files
+.DS_Store
+Thumbs.db
