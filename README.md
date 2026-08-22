@@ -23,6 +23,8 @@ The project demonstrates practical experience with:
 
 ## Architecture
 
+📐 **[View the full Azure architecture diagram](docs/architecture.md)**
+
 The Terraform configuration includes:
 
 - Azure Resource Group
