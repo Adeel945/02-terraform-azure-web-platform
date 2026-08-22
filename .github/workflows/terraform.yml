@@ -1,0 +1,48 @@
+name: Terraform CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  terraform:
+
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: environments/dev
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          client-id: c47f70bd-ea68-4f21-8aff-65f55924c93d
+          tenant-id: 348d70a3-296c-4b25-bcf9-7bdbc1edca8c
+          subscription-id: f103b43a-d2ad-459e-9511-315e7b2bdb37
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Format
+        run: terraform fmt -check -recursive
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Validate
+        run: terraform validate
+
+      - name: Terraform Plan
+        run: terraform plan
